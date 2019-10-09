@@ -14,12 +14,16 @@ I sent the project proposal to Lukas and later got it approved.
   
 I set up the basic structure for the project, including initiation of a git repo and a conda environment. Basic python modules needed  were also installed:
 
-```
+```bash
 $ conda create --name abi_project python=3.7
 
 $ source activate abi_project
 
 $ conda install numpy scipy jupyter matplotlib pandas seaborn statsmodels
+
+$ python -V
+Python 3.7.4
+
 ```
   
 More modules will be needed to be installed later on.  
