@@ -1,0 +1,4 @@
+# Ignore checkpoints and temp files
+*.ipynb_checkpoints
+*.md.swp
+
