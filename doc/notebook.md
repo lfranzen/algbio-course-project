@@ -31,4 +31,23 @@ More modules will be needed to be installed later on.
   
 Data for the project was downloaded from ArrayExpress, E-GEOD-83888, and placed in the data/ directory.  
   
+  
+## 2019-10-10, Thursday  
+  
+**13:00 – Set up Jupyter Notebook for main analysis**  
+  
+Make the 'abi_project' conda environment available in Jupyter:  
+
+```bash
+$ python -m ipykernel install --user --name abi_project
+```
+
+I initiated a jupyter notebook within the 'abi_project' conda evironment called `main_analysis.ipynb` (placed in the `results/` dir), where the main analysis will be kept.  
+  
+I added the code for reading the needed data files and wrote some background information about the project. 
+Did some basic visualisation of the data to get an idea of what it looks like. 
+Also started to look into how to implement differential gene expression analysis, since the popular edgeR or DESeq2 mehtods are only available in R.  
+  
+
+
 
