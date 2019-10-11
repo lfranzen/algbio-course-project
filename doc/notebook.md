@@ -48,6 +48,24 @@ I added the code for reading the needed data files and wrote some background inf
 Did some basic visualisation of the data to get an idea of what it looks like. 
 Also started to look into how to implement differential gene expression analysis, since the popular edgeR or DESeq2 mehtods are only available in R.  
   
+  
+## 2019-10-11, Friday  
+  
+**Afternoon – Look into DEA alternatives**
+  
+I couldn't find a good stand-alone python implementation for DEA, however there is the possibility to import the DESeq2 algorithm from R into python using the `rpy2` module in python. 
+I found a python implementation of written by the GitHub user *wckdouglas*, and the script is available here:<a href="https://gist.github.com/wckdouglas/3f8fb27a3d7a1eb24c598aa04f70fb25#file-py_deseq-py">`py_deseq.py`</a>.
 
+An example of how to use this script is available <a href="https://github.com/wckdouglas/diffexpr/blob/master/example/deseq_example.ipynb">here</a>.  
+  
+<details>
+  <summary>More</summary>
+
+  <script src="https://gist.github.com/wckdouglas/3f8fb27a3d7a1eb24c598aa04f70fb25.js"></script>
+</details>
+
+  
+I started to work on my python analysis script by creating a `sample_table` dataframe which I can run together with the expression data in the DEA.  
+  
 
 
