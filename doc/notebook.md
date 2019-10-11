@@ -58,14 +58,15 @@ I found a python implementation of written by the GitHub user *wckdouglas*, and 
 
 An example of how to use this script is available <a href="https://github.com/wckdouglas/diffexpr/blob/master/example/deseq_example.ipynb">here</a>.  
   
-<details>
-  <summary>More</summary>
-
-  <script src="https://gist.github.com/wckdouglas/3f8fb27a3d7a1eb24c598aa04f70fb25.js"></script>
-</details>
-
   
 I started to work on my python analysis script by creating a `sample_table` dataframe which I can run together with the expression data in the DEA.  
+   
   
+Before proceeding, I also need to make sure that rpy2 is installed in my conda env:  
+  
+```bash
+$ source activate abi_project
+$ conda install rpy2
+```
 
 
