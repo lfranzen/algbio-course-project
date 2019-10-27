@@ -111,7 +111,7 @@ I'll look into writing my own basic DEA script based on what we did at the cours
   
 ## 2019-10-15, Tuesday  
   
-** 10:30 – Started writing my own version of a DEA.**  
+**10:30 – Started writing my own version of a DEA**  
 
 Had some issues with the q-value calculation function and had to spend quite some time to debug it. 
 After restarting the jupyter notebook, it seemed to work. 
@@ -225,13 +225,50 @@ That module is called 'mpld3' and can be installed using: `conda install -c cond
 
 The way to implement what I want seems to be described here: https://stackoverflow.com/questions/33988130/interactive-labels-on-nodes-using-python-and-networkx  
   
+  
+## 2019-10-27, Sunday  
+  
+The mpld3 didn't want to work with my networkx object. The error I got said: "Object of type ndarray is not JSON serializable". I found a thread on StackOverflow (https://stackoverflow.com/questions/47380865/json-serialization-error-using-matplotlib-mpld3-with-linkedbrush) discussing the error and I therefore tested the following:
 
+Add `import networkx` to `/anaconda3/envs/abi_project/lib/python3.7/site-packages/mpld3/_display.py`
+  
+and,  
+  
+Add  
+`elif isinstance(obj,networkx.classes.reportviews.NodeView):
+    return list(obj)`  
+to the `default` function in class `NumpyEncoder` to make it work (also in `_display.py`)
+  
+  
+However this didn't seem to work either, so I tried another solution from the same stackoverflow thread which involved installing a fix to the mpld3 module:
+
+`python -m pip install --user "git+https://github.com/javadba/mpld3@display_fix"`
+
+And this seemed to solve the issue, at least partially.
 
   
+However I still couldn't get the interactive labels to work (using the tooltip plugin), and thethe error I got now showed that actually the mpld3 module being loaded is located in `~/.local/lib/python3.7/site-packages/mpld3/`, and not in the conda env. 
+This was probably changed when I did the pip install of the fix. 
+  
+Therefore I decided to test the addition of the `elif` statement written out above in the `_diplay.py` file located in the local dir (`~/.local/lib/python3.7/site-packages/mpld3/_display.py`). ~/.local/lib/python3.7/site-packages/mpld3/`
+Now it seems to work! :)  
+  
 
+**General improvements and bug fixes**  
+  
+I identified an error in the flattening of 'pw_ids' to 'pw_ids_flat' in the sense that the way I flattened the nested list ("[item for sublist in pw_ids for item in sublist]") couldn't handle single instances without instead breaking the string of the single instance apart. 
+Instead, I now found another custom function to flatten the nested list that could handle mixing of different formats. 
+So, instead of 2587 pathways, I now ended up with 2576, resulting in 846 unique pathways instead of 856.  
+This fix caused a downstream issue in the creation of the adjacency matrix. 
+  
+  
+In the identify_pathway() function, I had to add a line to replace "'on'" with 'on' (without quotes) since in one of the pathways this was a case and it was disrupting the conversion of the string to a dictionary (which relies on double-quotation marks). This will continue to work as long as there are no other such instances, which could appear if I choose to do the analysis with more genes.  
+  
+  
+**Improve network and look at network metrics**  
+I made some crude pathway classifications by simply grepping on certain keywords from the pathway descriptions. 
 
-
-
+I got the interactive plots to work, so that they display the pathway ID and name when you hover over the node.
 
 
 
