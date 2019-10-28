@@ -269,7 +269,13 @@ In the identify_pathway() function, I had to add a line to replace "'on'" with '
 I made some crude pathway classifications by simply grepping on certain keywords from the pathway descriptions. 
 
 I got the interactive plots to work, so that they display the pathway ID and name when you hover over the node.
-
+  
+  
+## 2019-10-28, Monday  
+  
+This is the last day of the project, and I dedicated it to writing the summary report and updating some of the text in the `main_analysis` file.  
+  
+I also have to do all the final commits and publish the repo so that it can be shared with Lukas. Need to update the README file as well.
 
 
 
